@@ -3,6 +3,9 @@ call plug#begin()
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'vim-test/vim-test'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'natebosch/dartlang-snippets'
 
 " Aesthetics - Main
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -74,6 +77,20 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 
+set clipboard+=unnamedplus
+let g:clipboard = {
+          \   'name': 'win32yank-wsl',
+          \   'copy': {
+          \      '+': 'win32yank.exe -i --crlf',
+          \      '*': 'win32yank.exe -i --crlf',
+          \    },
+          \   'paste': {
+          \      '+': 'win32yank.exe -o --lf',
+          \      '*': 'win32yank.exe -o --lf',
+          \   },
+          \   'cache_enabled': 0,
+          \ }
+
 :imap jk <ESC>
 let mapleader=" "
 nnoremap <SPACE> <Nop>
@@ -86,6 +103,15 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tA :TestSuite<CR>
 nmap <silent> <leader>tt :TestLast<CR>
 nmap <silent> <leader>tj :TestVisit<CR>
+
+" Config coc-snippets
+imap <tab> <Plug>(coc-snippets-expand)
+let g:UltiSnipsExpandTrigger = '<Nop>'
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
+
+nnoremap <leader>fe :CocCommand flutter.emulators <CR>
+nnoremap <leader>fd :below new output:///flutter-dev <CR>
 
 "nmap <leader>$s <C-w>s<C-w>j:terminal<CR>:set nonumber<CR><S-a>
 "nmap <leader>$v <C-w>v<C-w>l:terminal<CR>:set nonumber<CR><S-a>
@@ -299,5 +325,7 @@ hi DiffDelete guifg=#ff5555 guibg=none
 let g:sneak#s_next = 1
 
 let g:coc_global_extensions = [
-\ 'coc-flutter'
+\ 'coc-flutter',
+\ 'coc-snippets',
+\ 'coc-yaml'
 \ ]
