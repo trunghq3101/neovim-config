@@ -1,19 +1,18 @@
 """ Vim-Plug
-call plug#begin()
+call plug#begin('~/AppData/Local/nvim/plugged')
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'vim-test/vim-test'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
+Plug 'dart-lang/dart-vim-plugin'
 
 " Aesthetics - Main
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'bryanmylee/vim-colorscheme-icons'
 Plug 'mhinz/vim-startify'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'morhetz/gruvbox'
 
 " Functionalities
 Plug 'tpope/vim-fugitive'
@@ -22,6 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'ap/vim-buftabline'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -47,18 +47,21 @@ Plug 'psliwka/vim-smoothie'
 " Plug 'psliwka/vim-smoothie'
 " Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'wellle/context.vim'
-
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " Main Coloring Configurations
-syntax on
-color dracula
+"syntax on
+"color dracula
+set background=dark
+colorscheme gruvbox
 
 " Enable True Color Support (ensure you're using a 256-color enabled $TERM, e.g. xterm-256color)
 set termguicolors
 
 """ Main Configurations
-filetype plugin indent on
+"filetype plugin indent on
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
@@ -121,7 +124,7 @@ nmap \\ :NERDTreeToggle<CR>
 "nmap \| <leader>w
 " Close buffer
 nnoremap <leader>q :bp<cr>:bd #<cr>
-nmap <leader>rl :so ~/.config/nvim/init.vim<CR>
+nmap <leader>rl :so ~/AppData/Local/nvim/init.vim<CR>
 "nmap <leader>t :call TrimWhitespace()<CR>
 "xmap <leader>a gaip*
 "nmap <leader>a gaip*
